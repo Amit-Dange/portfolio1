@@ -22,18 +22,9 @@ export default function ContactMe() {
     <section
       className={`bg-black text-white min-h-screen py-10 px-4 ${orbitron.className}`}
     >
-      {/* <h1 className="text-4xl text-center mb-10 text-green-500">
-        Contact Me <span className="text-green-400">[Access Granted]</span>
-      </h1> */}
-
-<h1 className="text-4xl text-center mb-10 text-green-500">
-  Contact Me <span className="glitch">[Access Granted]</span>
-</h1>
-
-
-      {/* <div className="text-center text-xl mb-8 text-green-400 font-mono">
-        <span ref={dotsRef}>Send Transmission</span>
-      </div> */}
+      <h1 className="text-4xl text-center mb-10 text-green-500">
+        Contact Me <span className="glitch">[Access Granted]</span>
+      </h1>
 
       <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between gap-10">
         {/* Left Side - Contact Info and Dialogue */}
@@ -41,8 +32,8 @@ export default function ContactMe() {
           <div className="bg-gray-900 p-6 rounded-lg shadow-lg border border-green-500 hover:border-green-400 hover:shadow-[0_0_10px_rgba(0,255,0,0.3)] transition-all duration-300">
             <h2 className="text-2xl mb-4 text-green-500">Connect with the Grid</h2>
             <p className="text-gray-300 mb-2">
-              "In the neon-lit abyss, I await your signal. Enter the matrix and
-              reach out..."
+              &quot;In the neon-lit abyss, I await your signal. Enter the matrix and
+              reach out...&quot;
             </p>
             <p className="text-gray-400 text-sm mb-4">
               <strong>Email:</strong> amitdange123450@gmail.com
@@ -69,7 +60,7 @@ export default function ContactMe() {
               </a>
             </div>
             <p className="text-gray-300 mt-6 italic">
-              "Stay vigilant, runner. The corp-dogs are always watching..."
+              &quot;Stay vigilant, runner. The corp-dogs are always watching...&quot;
             </p>
           </div>
         </div>
@@ -78,7 +69,7 @@ export default function ContactMe() {
         <div className="lg:w-1/2 w-full">
           <div className="bg-gray-900 p-6 rounded-lg shadow-lg border border-green-500 hover:border-green-400 hover:shadow-[0_0_10px_rgba(0,255,0,0.3)] transition-all duration-300">
             <h2 className="text-2xl mb-4 text-green-500">
-            <span ref={dotsRef}>Send Transmission</span>
+              <span ref={dotsRef}>Send Transmission</span>
             </h2>
             <form className="space-y-4">
               <div>

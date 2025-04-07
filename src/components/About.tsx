@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { hackerEffect, revertText } from "../utils/hackerEffect";
 import { Orbitron } from "next/font/google";
 import Chart from "chart.js/auto";
+import Image from "next/image";
 
 const orbitron = Orbitron({
   subsets: ["latin"],
@@ -62,10 +63,12 @@ export default function About() {
       }
     }
 
+    const currentRefs = [...infoRefs.current];
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry, i) => {
-          const span = infoRefs.current[i];
+          const span = currentRefs[i];
           if (span) {
             if (entry.isIntersecting) {
               hackerEffect(span, i === 0 ? nickname : infoItems[i - 1].value);
@@ -78,16 +81,16 @@ export default function About() {
       { threshold: 0.5 }
     );
 
-    infoRefs.current.forEach((ref) => {
+    currentRefs.forEach((ref) => {
       if (ref) observer.observe(ref);
     });
 
     return () => {
-      infoRefs.current.forEach((ref) => {
+      currentRefs.forEach((ref) => {
         if (ref) observer.unobserve(ref);
       });
     };
-  }, []);
+  }, [infoItems, nickname]);
 
   return (
     <section className={`bg-black text-white min-h-screen ${orbitron.className}`}>
@@ -95,9 +98,11 @@ export default function About() {
         {/* Left Box for Photo */}
         <div className="md:w-1/3 w-full mb-8 md:mb-0">
           <div className="bg-gray-900 p-6 rounded-lg border border-green-500">
-            <img
+            <Image
               src="/path-to-photo.jpg"
               alt="Amit Dange"
+              width={400}
+              height={400}
               className="w-full rounded-lg border-2 border-green-500"
             />
             <p className="text-center mt-4 text-green-500">

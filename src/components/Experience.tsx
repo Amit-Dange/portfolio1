@@ -68,12 +68,15 @@ export default function Experience() {
       { threshold: 0.5 }
     );
 
-    [...titleRefs.current, ...companyRefs.current].forEach((el) => {
+    const currentTitleRefs = [...titleRefs.current];
+    const currentCompanyRefs = [...companyRefs.current];
+
+    [...currentTitleRefs, ...currentCompanyRefs].forEach((el) => {
       if (el) observer.observe(el);
     });
 
     return () => {
-      [...titleRefs.current, ...companyRefs.current].forEach((el) => {
+      [...currentTitleRefs, ...currentCompanyRefs].forEach((el) => {
         if (el) observer.unobserve(el);
       });
     };
@@ -105,7 +108,7 @@ export default function Experience() {
                     if (el) titleRefs.current[index] = el;
                   }}
                   data-type="title"
-                  data-index={index}
+                  data-index={index.toString()}
                 >
                   {experience.title}
                 </span>
@@ -117,7 +120,7 @@ export default function Experience() {
                       if (el) companyRefs.current[index] = el;
                     }}
                     data-type="company"
-                    data-index={index}
+                    data-index={index.toString()}
                   >
                     {experience.company}
                   </span>

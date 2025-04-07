@@ -38,13 +38,12 @@ export default function Navbar() {
               0 0 10px ${mainColor},
               0 0 20px ${mainColor}
             `,
-            ['--alt-color' as any]: altColor,
-          }}
+            "--alt-color": altColor,
+          } as React.CSSProperties & { "--alt-color": string }}
         >
           <span data-text="Amit Dange">Amit Dange</span>
         </Link>
 
-        {/* Hide this div on mobile (<640px), show on sm+ */}
         <div className="hidden sm:flex space-x-4">
           <Link href="#about" className="nav-link">About</Link>
           <Link href="#projects" className="nav-link">Projects</Link>
@@ -85,7 +84,6 @@ export default function Navbar() {
           color: #00ff00;
         }
 
-        /* Glitch Styles */
         .glitch-text {
           animation: flicker 2s infinite alternate, hueShift 10s infinite linear;
         }

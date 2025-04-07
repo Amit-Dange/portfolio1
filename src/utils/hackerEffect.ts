@@ -2,7 +2,7 @@ const chars = "!@#$%^&*()_+=-{}[]|:;<>,.?/~`ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghij
 
 export function hackerEffect(element: HTMLElement, finalText: string, speed = 50) {
   let iteration = 0;
-  let interval = setInterval(() => {
+  const interval = setInterval(() => {
     const scrambled = finalText
       .split("")
       .map((char, index) => {
@@ -13,7 +13,7 @@ export function hackerEffect(element: HTMLElement, finalText: string, speed = 50
 
     element.textContent = scrambled;
 
-    iteration += 1 / 3; // slower animation
+    iteration += 1 / 2; // slower animation
     if (iteration >= finalText.length) {
       clearInterval(interval);
       element.textContent = finalText;
