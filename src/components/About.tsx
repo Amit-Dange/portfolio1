@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useMemo } from "react";
 import { hackerEffect, revertText } from "../utils/hackerEffect";
 import { Orbitron } from "next/font/google";
 import Chart from "chart.js/auto";
@@ -17,14 +17,14 @@ export default function About() {
 
   const nickname = "BlackSchyte";
 
-  const infoItems = [
+  const infoItems = useMemo(() => [
     { label: "Date of Birth", value: "February 11, 2003" },
     { label: "Height", value: "179 cm" },
     { label: "Weight", value: "75 kg" },
     { label: "Blood Type", value: "A" },
     { label: "Likes", value: "Coding, Innovation" },
     { label: "Dislikes", value: "Bugs, Inefficiency" },
-  ];
+  ], []);
 
   useEffect(() => {
     if (canvasRef.current) {
