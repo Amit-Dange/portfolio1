@@ -7,8 +7,10 @@ import Experience from "@/components/Experience";
 import ContactMe from "@/components/Contact";
 
 export default function Home() {
+  // await new Promise((resolve) => setTimeout(resolve, 2000));
   return (
     <div>
+      
       {/* <Navbar /> */}
       <section id="hero">
         <Hero />

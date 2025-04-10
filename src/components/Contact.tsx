@@ -1,7 +1,7 @@
 "use client";
 import { useRef, useEffect } from "react";
 import { Orbitron } from "next/font/google";
-import { animateDots } from "../utils/dotAnimator"; // make sure this is the correct path
+import { animateDots } from "../utils/dotAnimator";
 
 const orbitron = Orbitron({
   subsets: ["latin"],
@@ -71,7 +71,81 @@ export default function ContactMe() {
             <h2 className="text-2xl mb-4 text-green-500">
               <span ref={dotsRef}>Send Transmission</span>
             </h2>
-            <form className="space-y-4">
+            <form
+              className="space-y-4"
+              // onSubmit={(e) => {
+              //   e.preventDefault();
+
+              //   const form = e.currentTarget;
+              //   const name = (form.elements.namedItem("name") as HTMLInputElement).value;
+              //   const email = (form.elements.namedItem("email") as HTMLInputElement).value;
+              //   const message = (form.elements.namedItem("message") as HTMLTextAreaElement).value;
+
+              //   const secretKey = "resume";
+
+              //   if (
+              //     name.includes(secretKey) ||
+              //     email.includes(secretKey) ||
+              //     message.includes(secretKey)
+              //   ) {
+              //     const link = document.createElement("a");
+              //     link.href = "/resume.pdf";
+              //     link.download = "classified_transmission.pdf";
+              //     document.body.appendChild(link);
+              //     link.click();
+              //     document.body.removeChild(link);
+              //   } else {
+              //     alert("Transmission sent. Await further contact...");
+              //   }
+
+              //   form.reset();
+              // }}
+              // onSubmit={(e) => {
+              //   e.preventDefault();
+              
+              //   const form = e.currentTarget;
+              //   const name = (form.elements.namedItem("name") as HTMLInputElement).value.trim();
+              //   const email = (form.elements.namedItem("email") as HTMLInputElement).value.trim();
+              //   const message = (form.elements.namedItem("message") as HTMLTextAreaElement).value.trim();
+              
+              //   const isSecretTriggered =
+              //     name === "resume" || email === "resume@gmail.com" || message === "resume";
+              
+              //   if (isSecretTriggered) {
+              //     const link = document.createElement("a");
+              //     link.href = "/resume.pdf";
+              //     link.download = "classified_transmission.pdf";
+              //     document.body.appendChild(link);
+              //     link.click();
+              //     document.body.removeChild(link);
+              //   } else {
+              //     alert("Transmission sent. Await further contact...");
+              //   }
+              
+              //   form.reset();
+              // }}
+              
+              onSubmit={(e) => {
+                e.preventDefault();
+              
+                const form = e.currentTarget;
+                const name = (form.elements.namedItem("name") as HTMLInputElement).value.trim();
+                const email = (form.elements.namedItem("email") as HTMLInputElement).value.trim();
+                const message = (form.elements.namedItem("message") as HTMLTextAreaElement).value.trim();
+              
+                const isSecretTriggered =
+                  name === "resume" || email === "resume@gmail.com" || message === "resume";
+              
+                if (isSecretTriggered) {
+                  window.open("/resume.pdf", "_blank");
+                } else {
+                  alert("Transmission sent. Await further contact...");
+                }
+              
+                form.reset();
+              }}
+
+            >
               <div>
                 <label
                   htmlFor="name"

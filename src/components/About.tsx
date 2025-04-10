@@ -99,7 +99,7 @@ export default function About() {
         <div className="md:w-1/3 w-full mb-8 md:mb-0">
           <div className="bg-gray-900 p-6 rounded-lg border border-green-500">
             <Image
-              src="/path-to-photo.jpg"
+              src="/prof.jpg"
               alt="Amit Dange"
               width={400}
               height={400}
