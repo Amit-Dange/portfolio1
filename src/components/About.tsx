@@ -19,9 +19,9 @@ export default function About() {
 
   const infoItems = useMemo(() => [
     { label: "Date of Birth", value: "February 11, 2003" },
-    { label: "Height", value: "179 cm" },
+    { label: "Height", value: "170 cm" },
     { label: "Weight", value: "75 kg" },
-    { label: "Blood Type", value: "A" },
+    { label: "Blood Type", value: "A+ve" },
     { label: "Likes", value: "Coding, Innovation" },
     { label: "Dislikes", value: "Bugs, Inefficiency" },
   ], []);
@@ -33,7 +33,7 @@ export default function About() {
         new Chart(ctx, {
           type: "radar",
           data: {
-            labels: ["Frontend", "Backend", "Leadership", "CP", "AI", "Web 3"],
+            labels: ["Frontend", "Backend", "Leadership", "Competetive Programming", "Artificial Intelligence", "Web 3"],
             datasets: [
               {
                 label: "Skill Stats",
