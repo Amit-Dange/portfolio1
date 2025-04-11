@@ -5,6 +5,7 @@ import Hero from "../components/Hero";
 import Projects from "../components/Projects";
 import Experience from "@/components/Experience";
 import ContactMe from "@/components/Contact";
+import Skills from "@/components/Skills";
 
 export default function Home() {
   // await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -20,6 +21,9 @@ export default function Home() {
       </section> */}
       <section id="about">
         <About />
+      </section>
+      <section id="skills">
+        <Skills />
       </section>
       <section id="projects">
         <Projects />

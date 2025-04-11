@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useMemo } from "react";
+import '../app/globals.css';
+import { useEffect, useRef } from "react";
 import { hackerEffect, revertText } from "../utils/hackerEffect";
 import { Orbitron } from "next/font/google";
 import Chart from "chart.js/auto";
@@ -13,20 +14,20 @@ const orbitron = Orbitron({
 
 export default function About() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const infoRefs = useRef<(HTMLSpanElement | null)[]>([]);
+  const nicknameRef = useRef<HTMLSpanElement | null>(null);
 
   const nickname = "BlackSchyte";
 
-  const infoItems = useMemo(() => [
-    { label: "Date of Birth", value: "February 11, 2003" },
-    { label: "Height", value: "170 cm" },
-    { label: "Weight", value: "75 kg" },
-    { label: "Blood Type", value: "A+ve" },
-    { label: "Likes", value: "Coding, Innovation" },
-    { label: "Dislikes", value: "Bugs, Inefficiency" },
-  ], []);
+  const infoItems = [
+    { label: "Who Am I", value: "Full-Stack Developer passionate about AI and scalable systems" },
+    { label: "Education", value: "B.Tech CSE, PCCOE&R Pune, 8.7 CGPA" },
+    { label: "Top Achievement", value: "Top 0.3% in Amazon ML Summer School 2024" },
+    { label: "Current Role", value: "Junior Software Engineer Intern at EPAM Systems" },
+    { label: "Core Skills", value: "React, Spring Boot, TensorFlow, AWS" },
+  ];
 
   useEffect(() => {
+    // Initialize radar chart
     if (canvasRef.current) {
       const ctx = canvasRef.current.getContext("2d");
       if (ctx) {
@@ -63,34 +64,28 @@ export default function About() {
       }
     }
 
-    const currentRefs = [...infoRefs.current];
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry, i) => {
-          const span = currentRefs[i];
-          if (span) {
+    // Hacker effect for nickname only
+    if (nicknameRef.current) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              hackerEffect(span, i === 0 ? nickname : infoItems[i - 1].value);
+              hackerEffect(nicknameRef.current!, nickname);
             } else {
-              revertText(span, i === 0 ? nickname : infoItems[i - 1].value);
+              revertText(nicknameRef.current!, nickname);
             }
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
+          });
+        },
+        { threshold: 0.5 }
+      );
 
-    currentRefs.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
+      observer.observe(nicknameRef.current);
 
-    return () => {
-      currentRefs.forEach((ref) => {
-        if (ref) observer.unobserve(ref);
-      });
-    };
-  }, [infoItems, nickname]);
+      return () => {
+        observer.unobserve(nicknameRef.current!);
+      };
+    }
+  }, []);
 
   return (
     <section className={`bg-black text-white min-h-screen ${orbitron.className}`}>
@@ -106,7 +101,7 @@ export default function About() {
               className="w-full rounded-lg border-2 border-green-500"
             />
             <p className="text-center mt-4 text-green-500">
-              <span ref={(el) => { infoRefs.current[0] = el; }}>{nickname}</span>
+              <span ref={nicknameRef}>{nickname}</span>
             </p>
           </div>
         </div>
@@ -118,10 +113,7 @@ export default function About() {
             <ul className="space-y-2">
               {infoItems.map((item, index) => (
                 <li key={index}>
-                  <strong className="text-green-500">{item.label}:</strong>{" "}
-                  <span ref={(el) => { infoRefs.current[index + 1] = el; }}>
-                    {item.value}
-                  </span>
+                  <strong className="text-green-500">{item.label}:</strong> {item.value}
                 </li>
               ))}
             </ul>
